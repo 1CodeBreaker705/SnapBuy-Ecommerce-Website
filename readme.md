@@ -148,12 +148,18 @@ SnapBuy includes a dynamic product discovery system with:
 - Combined layered filtering
 - Dynamic MongoDB query generation
 
-📦 Installation & Setup
+---
+
+# Installation & Setup
+
 1️) Frontend Setup
 cd frontend
 npm install
 npm run dev
+
 2️) Backend Setup
 cd backend
 pip install -r requirements.txt
 uvicorn app:app --reload
+
+---
