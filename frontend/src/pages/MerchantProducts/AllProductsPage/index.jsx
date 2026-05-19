@@ -173,7 +173,7 @@ export default AllProductsPage
                             <div className='flex items-center gap-2'>
                           
                               <Link
-                                to={`/update-product/${data.product_id}`}
+                                to={`/update-product/${data.product_id}/${data.slug}`}
                                 onClick={(e) => e.stopPropagation()}
                                 className="
                                 flex
