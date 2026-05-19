@@ -70,7 +70,7 @@ const App = () => {
             <Route element={<RoleProtectedLayout role="merchant" />}>
                <Route path='/add-product' Component={AddProductPage}/>
                <Route path='/all-products' Component={AllProductsPage}/>
-               <Route path='/update-product/:id' Component={UpdateProductPage}/>
+               <Route path='/update-product/:id/:slug' Component={UpdateProductPage}/>
                <Route path='/merchant-orders' Component={MerchantOrdersPage}/> 
             </Route>
           </Route>
