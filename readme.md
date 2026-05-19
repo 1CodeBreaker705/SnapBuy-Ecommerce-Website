@@ -152,14 +152,14 @@ SnapBuy includes a dynamic product discovery system with:
 
 # Installation & Setup
 
-1️) Frontend Setup
-cd frontend
-npm install
-npm run dev
+## Frontend Setup
+-cd frontend
+-npm install
+-npm run dev
 
-2️) Backend Setup
-cd backend
-pip install -r requirements.txt
-uvicorn app:app --reload
+## Backend Setup
+-cd backend
+-pip install -r requirements.txt
+-uvicorn app:app --reload
 
 ---
