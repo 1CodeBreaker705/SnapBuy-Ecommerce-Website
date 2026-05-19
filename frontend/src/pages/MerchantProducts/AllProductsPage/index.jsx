@@ -170,7 +170,7 @@ export default AllProductsPage
                               {moment(data.created_at).format("LLL")}
                             </p>
                           
-                            <div className='flex items-center gap-2'>
+                            <div className='flex flex-col sm:flex-row items-end sm:items-center gap-2'>
                           
                               <Link
                                 to={`/update-product/${data.product_id}/${data.slug}`}
@@ -179,7 +179,8 @@ export default AllProductsPage
                                 flex
                                 items-center
                                 justify-center
-                                px-4
+                                px-3
+                                md:px-4
                                 h-8
                                 md:h-11
                                 rounded-xl
@@ -190,6 +191,7 @@ export default AllProductsPage
                                 duration-300
                                 text-sm
                                 md:text-base
+                                whitespace-nowrap
                                 "
                               >
                                 Update
