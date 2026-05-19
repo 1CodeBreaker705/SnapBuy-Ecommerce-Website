@@ -119,12 +119,17 @@ const MerchantOrdersPage = () => {
                             <p className='flex items-center justify-start gap-x-1'>
 
                               <span
-                                className={clsx(
-                                  "w-3 h-3 block rounded-full",
-                                  cur.order_status === "completed"
-                                    ? "bg-green-700 animate-pulse"
-                                    : "bg-yellow-500"
-                                )}
+                                      className={clsx(
+                                          "w-3 h-3 block rounded-full animate-pulse",
+                                        
+                                          cur.order_status === "pending"
+                                            ? "bg-yellow-500"
+                                        
+                                            : cur.order_status === "cancelled"
+                                            ? "bg-red-700"
+                                        
+                                            : "bg-green-700"
+                                        )}
                               ></span>
 
                               <span className='uppercase font-medium'>
@@ -200,8 +205,8 @@ const MerchantOrdersPage = () => {
                                   className="mt-3 w-full border rounded-lg p-2 text-sm"
                                 >
 
-                                  <option value="pending">
-                                    Pending
+                                  <option value="placed">
+                                    Placed
                                   </option>
 
                                   <option value="shipped">
