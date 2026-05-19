@@ -80,12 +80,17 @@ const CustomerOrdersPage = () => {
 
                                         <p>
                                           <span
-                                            className={clsx(
-                                              "px-3 rounded py-1 uppercase border",
-                                              cur.status === "cancelled"
-                                                ? "text-red-700 bg-red-100 border-red-200"
-                                                : "text-green-700 bg-green-100 border-green-200"
-                                            )}
+                                          className={clsx(
+                                                "px-3 rounded py-1 uppercase border",
+                      
+                                                cur.status === "pending"
+                                                  ? "text-yellow-700 bg-yellow-100 border-yellow-200"
+                                              
+                                                  : cur.status === "cancelled"
+                                                  ? "text-red-700 bg-red-100 border-red-200"
+                                              
+                                                  : "text-green-700 bg-green-100 border-green-200"
+                                              )}
                                           >
                                             {cur.id}
                                           </span>
@@ -94,12 +99,17 @@ const CustomerOrdersPage = () => {
                                         <p className='flex items-center justify-start gap-x-1'>
 
                                           <span
-                                            className={clsx(
-                                              "w-3 h-3 block rounded-full",
-                                              cur.status === "cancelled"
-                                                ? "bg-red-700 animate-pulse"
-                                                : "bg-green-700 animate-pulse"
-                                            )}
+                                              className={clsx(
+                                                  "w-3 h-3 block rounded-full animate-pulse",
+                                                
+                                                  cur.status === "pending"
+                                                    ? "bg-yellow-500"
+                                                
+                                                    : cur.status === "cancelled"
+                                                    ? "bg-red-700"
+                                                
+                                                    : "bg-green-700"
+                                                )}
                                           ></span>
 
                                           <span className='uppercase font-medium'>
@@ -116,8 +126,8 @@ const CustomerOrdersPage = () => {
 
             {
              
-                                                  cur.products.map((product,i)=>{
-  return (
+                          cur.products.map((product,i)=>{
+                                      return (
 
                                         <Link
                                           to={`/product/${product.slug}`}
@@ -158,14 +168,23 @@ const CustomerOrdersPage = () => {
                                           </p>
 
                                           <p
-                                            className={clsx(
-                                              "text-xs uppercase mt-3 font-medium",
-                                              product.fulfillment_status === "cancelled"
-                                                ? "text-red-600"
-                                                : product.fulfillment_status === "delivered"
-                                                ? "text-green-600"
-                                                : "text-yellow-600"
-                                            )}
+                                              className={clsx(
+                                                  "text-xs uppercase mt-3 font-medium",
+                                                
+                                                  product.fulfillment_status === "cancelled"
+                                                    ? "text-red-600"
+                                                
+                                                    : product.fulfillment_status === "delivered"
+                                                    ? "text-green-600"
+                                                
+                                                    : product.fulfillment_status === "shipped"
+                                                    ? "text-blue-600"
+                                                
+                                                    : product.fulfillment_status === "out_for_delivery"
+                                                    ? "text-purple-600"
+                          
+                                                    : "text-yellow-600"
+                                                )}
                                           >
                                             {product.fulfillment_status.replaceAll("_"," ")}
                                           </p>
