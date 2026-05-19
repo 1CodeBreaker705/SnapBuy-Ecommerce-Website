@@ -127,7 +127,7 @@ async def checkoutPaymentFailService(razorpay_order_id):
 
       if not order:
         raise HTTPException(404, "Order Not Found")
-      print(order['order_status'])
+          
       if order['order_status'] == checkoutModel.OrdersEnum.confirmed:
             return {
                 "msg": "Order already confirmed"
