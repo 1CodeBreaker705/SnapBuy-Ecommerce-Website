@@ -12,10 +12,10 @@ const AddProductPage = () => {
 
  // ZOD SCHEMA
 const registerSchema = z.object({
-  title: z.string().trim().min(1, "Name is required"),
+  title: z.string().trim().min(1, "Name is required").max(500, "Title cannot exceed 500 characters"),
   main_category: z.string().min(1, "Select category"),
   sub_category: z.string().min(1, "Select subcategory"),
-  description: z.string().trim().min(1, "Description is required").max(3000, "Description cannot exceed 1000 characters"),
+  description: z.string().trim().min(1, "Description is required").max(3000, "Description cannot exceed 3000 characters"),
   price: z.string().min(1, "Price is required"),
   images: z.array(z.instanceof(File)).min(1, "At least 1 image is required")
 })
@@ -59,7 +59,12 @@ const {
       toast.success(response.data.msg)
       reset()
     } catch (err) {
-       toast.error(err?.response?.data?.detail || err.message)
+       const detail = err?.response?.data?.detail
+         if (Array.isArray(detail)) {
+            toast.error(detail[0]?.msg || "Validation Error")
+         } else {
+            toast.error(detail || err.message)
+         }
     }
   }
 
