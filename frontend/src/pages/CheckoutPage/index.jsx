@@ -67,7 +67,7 @@ const CheckoutPage = () => {
             name: 'Dev With Ranjan',
             description: 'SnapBuy Payments',
             order_id: data.id,
-            callback_url: `${ENVConstants.VITE_APP_BACKEND_URI}/checkout/callback`,
+            callback_url: `${ENVConstants.VITE_APP_BACKEND_URI}/api/v1/checkout/callback`,
             prefill: {
                 name: user.name,
                 email: user.email,
