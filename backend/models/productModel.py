@@ -6,7 +6,7 @@ class AddProduct(BaseModel):
    title:str=Field(min_length=1, max_length=120)
    main_category:MainCategory
    sub_category: str
-   description:str = Field(max_length=1000)
+   description:str = Field(max_length=3000)
    price:int = Field(gt=0)
    created_at:datetime =Field(default_factory=lambda:datetime.now(timezone.utc))
 
