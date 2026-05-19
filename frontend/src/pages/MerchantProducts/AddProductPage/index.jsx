@@ -15,7 +15,7 @@ const registerSchema = z.object({
   title: z.string().trim().min(1, "Name is required"),
   main_category: z.string().min(1, "Select category"),
   sub_category: z.string().min(1, "Select subcategory"),
-  description: z.string().trim().min(1, "Description is required").max(1000, "Description cannot exceed 1000 characters"),
+  description: z.string().trim().min(1, "Description is required").max(3000, "Description cannot exceed 1000 characters"),
   price: z.string().min(1, "Price is required"),
   images: z.array(z.instanceof(File)).min(1, "At least 1 image is required")
 })
