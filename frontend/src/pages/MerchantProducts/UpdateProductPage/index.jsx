@@ -12,7 +12,7 @@ import LoaderComponent from '../../../components/LoaderComponent'
 
 const UpdateProductPage = () => {
 
-  const { id } = useParams()
+  const { id,slug } = useParams()
 
   const [loading, setLoading] = useState(true)
   const [initialLoad, setInitialLoad] = useState(true)
@@ -53,7 +53,7 @@ const UpdateProductPage = () => {
 
   const fetchProduct = async () => {
     try {
-      const response = await axiosClient.get(`/product/${id}`)
+      const response = await axiosClient.get(`/product/${slug}`)
 
       const product = response.data
 
