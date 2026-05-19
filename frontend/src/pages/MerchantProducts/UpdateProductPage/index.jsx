@@ -20,15 +20,10 @@ const UpdateProductPage = () => {
   // ZOD SCHEMA
   const registerSchema = z.object({
     title: z.string().trim().min(1, "Name is required").max(500, "Title cannot exceed 500 characters"),
-
     main_category: z.string().min(1, "Select category"),
-
     sub_category: z.string().min(1, "Select subcategory"),
-
     description: z.string().trim().min(1, "Description is required").max(3000, "Description cannot exceed 3000 characters"),
-
     price: z.string().min(1, "Price is required"),
-
     images: z.array(z.instanceof(File)).min(1, "At least 1 image is required")
   })
 
@@ -58,9 +53,7 @@ const UpdateProductPage = () => {
 
   const fetchProduct = async () => {
     try {
-      const response = await axiosClient.get(
-        `/product/get-single-product/${id}`
-      )
+      const response = await axiosClient.get(`/product/${id}`)
 
       const product = response.data
 
@@ -69,8 +62,8 @@ const UpdateProductPage = () => {
         main_category: product.main_category,
         sub_category: product.sub_category,
         description: product.description,
-        price: String(product.price),
-        images: []
+        price: product.price,
+        images: product.images
       })
 
     } catch (error) {
@@ -92,14 +85,11 @@ const UpdateProductPage = () => {
 
   // RESET SUBCATEGORY ONLY WHEN USER CHANGES CATEGORY
   useEffect(() => {
-
     if (initialLoad) {
       setInitialLoad(false)
       return
     }
-
     setValue("sub_category", "")
-
   }, [selectedMainCategory])
 
 
@@ -115,7 +105,7 @@ const UpdateProductPage = () => {
       formData.append("description", data.description)
       formData.append("price", data.price)
 
-      // OPTIONAL IMAGE UPDATE
+
       if (data.images?.length > 0) {
 
         data.images.forEach((file) => {
@@ -132,19 +122,13 @@ const UpdateProductPage = () => {
       toast.success(response.data.msg)
 
     } catch (err) {
-
       const detail = err?.response?.data?.detail
-
       if (Array.isArray(detail)) {
-
         toast.error(
           detail[0]?.msg || "Validation Error"
         )
-
       } else {
-
         toast.error(detail || err.message)
-
       }
     }
   }
