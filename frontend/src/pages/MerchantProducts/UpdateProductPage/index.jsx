@@ -92,6 +92,14 @@ const UpdateProductPage = () => {
     setValue("sub_category", "")
   }, [selectedMainCategory])
 
+  
+  useEffect(() => {
+  const textarea = document.getElementById("description")
+  if (textarea) {
+    textarea.style.height = "auto"
+    textarea.style.height = `${textarea.scrollHeight}px`
+  }
+}, [loading])
 
   
   const onSubmit = async (data) => {
@@ -266,12 +274,6 @@ const UpdateProductPage = () => {
                           disabled={isSubmitting}
                           {...register("description")}
                           id='description'
-                          ref={(el) => {
-                            if (el) {
-                              el.style.height = "auto"
-                              el.style.height = `${el.scrollHeight}px`
-                            }
-                          }}
                           onInput={(e) => {
                             e.target.style.height = "auto"
                             e.target.style.height = `${e.target.scrollHeight}px`
