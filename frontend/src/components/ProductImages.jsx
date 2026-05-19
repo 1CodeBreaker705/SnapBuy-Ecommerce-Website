@@ -5,12 +5,17 @@ import { MdOutlineCloudUpload } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 import { useWatch } from 'react-hook-form';
 
-const ProductImages = ({ setValue, control, setError }) => {
+const ProductImages = ({ setValue, control, setError, existingImages = [] }) => {
 
   const images = useWatch({
     control,
     name: "images",
   })
+
+    const allImages = [
+    ...existingImages,
+    ...(images || [])
+   ]
 
   const onDrop = useCallback((acceptedFiles) => {
 
@@ -74,12 +79,12 @@ const ProductImages = ({ setValue, control, setError }) => {
   {/* Uploaded Images */}
 
   {
-     images?.length > 0 && (
+     allImages?.length > 0 && (
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5'>
 
         {
-          images.map((curr, i) => {
+          allImages.map((curr, i) => {
 
             return (
 
@@ -102,8 +107,20 @@ const ProductImages = ({ setValue, control, setError }) => {
 
                 <button
                   type='button'
-                  onClick={() => deleteHandler(i)}
-                  className='absolute top-3 right-3 text-2xl rounded-full p-1 bg-white/90 backdrop-blur-md text-black shadow-md hover:bg-red-500 hover:text-white transition cursor-pointer'
+                            onClick={() => {
+                                if (!curr.image_url) {
+                                  deleteHandler(i - existingImages.length)
+                                }
+                              }}
+                        className={`
+                            absolute top-3 right-3 text-2xl rounded-full p-1
+                            bg-white/90 backdrop-blur-md shadow-md transition
+                            ${
+                              curr.image_url
+                                ? "text-gray-400 cursor-not-allowed"
+                                : "text-black hover:bg-red-500 hover:text-white cursor-pointer"
+                            }
+                        `}
                 >
 
                   <IoIosClose />
