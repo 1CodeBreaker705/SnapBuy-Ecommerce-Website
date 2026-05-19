@@ -222,9 +222,9 @@ const CheckoutPage = () => {
 
             <div className="col-span-1 md:col-span-2">
                 <AddAdressModel  className={'flex w-full items-center justify-center gap-2 rounded-lg border border-gray-200 cursor-pointer bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 hover:cursor-pointer'} text='Add New Address' />
-                {errors.address && (
+                {errors.address_id && (
                       <p className='text-red-500 text-sm'>
-                      {errors.address.message}
+                      {errors.address_id.message}
                       </p>
                 )}
             </div>
