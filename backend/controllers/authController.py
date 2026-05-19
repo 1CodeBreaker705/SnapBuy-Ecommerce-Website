@@ -6,8 +6,8 @@ async def registerController(data,response):
         key="access_token",
         value=token,
         httponly=True,
-        secure=False,     # true in deployment (HTTPS) / false in local (http)
-        samesite="lax",
+        secure=True,     # true in deployment (HTTPS) / false in local (http)
+        samesite="none",  # none in deployment / lax in local 
         max_age=864000,
         path="/"
     )
@@ -21,8 +21,8 @@ async def loginController(data,response):
         key="access_token",
         value=token,
         httponly=True,
-        secure=False,     # true in deployment (HTTPS) / false in local (http)
-        samesite="lax",
+        secure=True,     # true in deployment (HTTPS) / false in local (http)
+        samesite="none",  # none in deployment / lax in local 
         max_age=864000,
         path="/"
     )
