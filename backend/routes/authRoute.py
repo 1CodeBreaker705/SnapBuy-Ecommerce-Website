@@ -27,8 +27,8 @@ async def logout(response: Response):
     response.delete_cookie(
         key="access_token",
         httponly=True,
-        secure=True,     # True in deployment (HTTPS) / False in Local(Http)
-        samesite="lax",
+        secure=True,     # True in deployment (HTTPS) / False in Local(Http) 
+        samesite="none",  # none in deployement / lax in local 
         path="/"
     )
     return {"msg": "Logged out"}
