@@ -146,4 +146,14 @@ SnapBuy includes a dynamic product discovery system with:
 - Main category filtering
 - Subcategory filtering
 - Combined layered filtering
-- Dynamic MongoDB query gene
+- Dynamic MongoDB query generation
+
+📦 Installation & Setup
+1️) Frontend Setup
+cd frontend
+npm install
+npm run dev
+2️) Backend Setup
+cd backend
+pip install -r requirements.txt
+uvicorn app:app --reload
