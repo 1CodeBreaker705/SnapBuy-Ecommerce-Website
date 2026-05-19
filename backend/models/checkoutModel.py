@@ -8,6 +8,7 @@ class MakeCheckout(BaseModel):
     address_id:str
 
 class FulfillmentStatusEnum(str,Enum):
+    pending="pending"
     placed="placed"
     shipped="shipped"
     out_for_delivery='out_for_delivery'
