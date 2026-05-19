@@ -89,7 +89,11 @@ const ProductImages = ({ setValue, control, setError }) => {
               >
 
                 <img
-                  src={URL.createObjectURL(curr)}
+                       src={
+                          curr.image_url
+                            ? curr.image_url
+                            : URL.createObjectURL(curr)
+                        }
                   alt={i + 1}
                   className='w-full h-[230px] object-cover group-hover:scale-105 transition duration-300'
                 />
