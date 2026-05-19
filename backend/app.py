@@ -10,9 +10,31 @@ from routes.dashboardRoute import router as DashboardRouter
 from routes.merchantOrdersRoute import router as MerchantOrdersRouter
 from fastapi.middleware.cors import CORSMiddleware
 from config.env import ENVConfig
+from contextlib import asynccontextmanager
+from datetime import datetime, timezone, timedelta
+from config.db import orders_collection
+
 #fastapi instance
 
-app=FastAPI(title='Ecommerce API')
+#this function automatically cleans orders from database on each server startup with order_status=pending older than 7 days (pending -> orders which couldnt be successfull nor cancelled)
+#order created but didnt made any transaction
+
+async def cleanup_pending_orders():         
+    await orders_collection.delete_many({
+        "order_status": "pending",
+        "created_at": {
+            "$lt": datetime.now(timezone.utc) - timedelta(days=7)
+        }
+    })
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+
+    await cleanup_pending_orders()
+
+    yield
+
+app=FastAPI(title='Ecommerce API',lifespan=lifespan)
 
 #for CORS Error
 app.add_middleware(CORSMiddleware,allow_headers=['*'],
