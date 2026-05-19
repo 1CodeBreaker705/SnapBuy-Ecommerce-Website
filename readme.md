@@ -171,10 +171,9 @@ uvicorn app:app --reload
 in backend/controllers/authController.py 
  in register controller and login controller change set_cookie values
  secure=True samesite="none" in deployment  secure=False samesite="lax" in local
+ 
 in backend/routes/authRoute.py change delete_cookie values
  secure=True samesite="none" in deployment  secure=False samesite="lax" in local
-pip install -r requirements.txt
-uvicorn app:app --reload
 ```
 
 
