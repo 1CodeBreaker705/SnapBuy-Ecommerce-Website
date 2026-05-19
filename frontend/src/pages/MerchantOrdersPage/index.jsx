@@ -202,7 +202,7 @@ const MerchantOrdersPage = () => {
                                       e.target.value
                                     )
                                   }
-                                  className="mt-3 w-full border rounded-lg p-2 text-sm"
+                                  className="mt-3 w-full border rounded-lg p-2 text-sm hover:cursor-pointer"
                                 >
 
                                   <option value="placed">
