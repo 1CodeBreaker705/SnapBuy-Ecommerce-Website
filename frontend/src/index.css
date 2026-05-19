@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.swiper {
+  --swiper-navigation-color: #120C0C;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  transform: scale(0.8);
+}
+
+@media (max-width: 768px) {
+
+  .swiper-button-prev {
+    left: -12px !important;
+    transform: scale(0.4);
+  }
+
+  .swiper-button-next {
+    right: -12px !important;
+    transform: scale(0.4);
+  }
+
+}

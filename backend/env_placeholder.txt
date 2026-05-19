@@ -1,0 +1,12 @@
+create .env in your backend
+
+MONGO_URI= ""
+MONGO_DB= ""
+JWT_AUTH_SECRET= ""
+API_KEY_CLOUDINARY= ""
+API_SECRET_CLOUDINARY= ""
+CLOUDINARY_CLOUD_NAME= ""
+RAZORPAY_KEY_ID= ""
+RAZORPAY_KEY_SECRET= ""
+FRONTEND_URI='http://localhost:5173'
+   

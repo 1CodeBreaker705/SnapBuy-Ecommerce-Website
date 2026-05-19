@@ -1,0 +1,4 @@
+create .env in your frontend folder
+
+VITE_APP_RAZORPAY_KEY_ID=""
+VITE_APP_BACKEND_URI=""
