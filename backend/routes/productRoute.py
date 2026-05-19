@@ -25,6 +25,19 @@ async def addProductView(images:Annotated[List[UploadFile],File(...)],title:str=
     return await productController.addProductController(images,data,user_id)
   except ValidationError as e :
      raise HTTPException(status_code=400,detail=e.errors())
+
+@router.patch("/update-product/{id}")
+async def updateProductView(id: str,images: Annotated[List[UploadFile], File(...)],title: str = Form(...),main_category: str = Form(...),sub_category: str = Form(...),description: str = Form(...),price: int = Form(...),user_id: str = Depends(verify(RolesEnum.merchant))):
+
+    data = productModel.AddProduct.model_validate({
+        "title": title,
+        "description": description,
+        "main_category": main_category,
+        "sub_category": sub_category,
+        "price": price,
+    })
+
+    return await productController.updateProductController(id,images,data,user_id)
   
 @router.delete("/delete/{id}")
 async def deleteProductView(id:str,user_id:str= Depends(verify(RolesEnum.merchant))):
