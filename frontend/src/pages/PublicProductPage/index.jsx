@@ -81,7 +81,7 @@ const PublicProductPage = () => {
         <h2 className="uppercase text-sm font-medium text-zinc-400 tracking-wide md:tracking-[0.2em] mb-4">{product.main_category?.replaceAll("_"," ")}{" > "}{product.sub_category?.replaceAll("_"," ")}</h2>
         <h1 className="text-gray-900 text-2xl lg:text-3xl break-words leading-tight font-semibold mb-1">{product.title}</h1>
         
-        <p className="leading-7 md:leading-8 text-base md:text-lg text-zinc-600 mt-6 max-w-2xl">{product.description}</p>
+        <p className="leading-7 md:leading-8 text-base md:text-lg text-zinc-600 mt-6 max-w-2xl whitespace-pre-wrap ">{product.description}</p>
        
         <div className="flex flex-wrap items-center gap-4 mt-10">
           <span className="title-font text-2xl sm:text-3xl font-bold text-gray-900">&#8377;{product.price}</span>
