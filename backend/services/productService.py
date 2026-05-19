@@ -61,6 +61,71 @@ async def addProductService(images,data,user_id):
     raise HTTPException(status_code=500,detail="Product creation failed")
 
 
+async def updateProductService(id, images, data, user_id):
+
+    product = await product_collection.find_one({
+        "_id": bson.ObjectId(id),
+        "merchant_detail._id": user_id
+    })
+
+    if not product:
+        raise HTTPException(
+            status_code=404,
+            detail="Product Not Found"
+        )
+
+    data = data.model_dump()
+
+    data["slug"] = slugify(
+        data["title"] + "-" + str(uuid.uuid4())
+    )
+
+    updated_images = product["images"]
+
+    # if merchant uploads new images
+    if images:
+
+        uploaded_images = []
+
+        for image in images:
+
+            content = await image.read()
+
+            result = cloudinary.uploader.upload(content)
+
+            uploaded_images.append({
+                "image_url": result["secure_url"],
+                "public_id": result["public_id"]
+            })
+
+        # delete old images
+        for image in product["images"]:
+            cloudinary.uploader.destroy(
+                image["public_id"]
+            )
+
+        updated_images = uploaded_images
+
+    updated_product = {
+        **data,
+        "images": updated_images
+    }
+
+    await product_collection.update_one(
+        {
+            "_id": bson.ObjectId(id),
+            "merchant_detail._id": user_id
+        },
+        {
+            "$set": updated_product
+        }
+    )
+
+    return {
+        "msg": "Product Updated"
+    }
+
+
 async def deleteProductService(id,user_id):
     product = await product_collection.find_one_and_delete({"_id":bson.ObjectId(id),"merchant_detail._id": user_id})
     if not product:
