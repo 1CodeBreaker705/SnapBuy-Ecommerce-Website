@@ -24,6 +24,7 @@ import AboutPage from './pages/AboutPage'
 import CustomerOrdersPage from './pages/CustomerOrdersPage'
 import MerchantOrdersPage from './pages/MerchantOrdersPage'
 import ScrollToTopButton from './components/ScrollToTopButton'
+import UpdateProductPage from './pages/MerchantProducts/UpdateProductPage'
 
 const App = () => {
   const loading=useAuthStore((s)=>s.loading)
@@ -69,6 +70,7 @@ const App = () => {
             <Route element={<RoleProtectedLayout role="merchant" />}>
                <Route path='/add-product' Component={AddProductPage}/>
                <Route path='/all-products' Component={AllProductsPage}/>
+               <Route path='/update-product/:id' Component={UpdateProductPage}/>
                <Route path='/merchant-orders' Component={MerchantOrdersPage}/> 
             </Route>
           </Route>
