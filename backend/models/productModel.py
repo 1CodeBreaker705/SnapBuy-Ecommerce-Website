@@ -3,7 +3,7 @@ from config.categoriesConfig import MainCategory,CATEGORY_MAP
 from datetime import datetime,timezone
 
 class AddProduct(BaseModel):
-   title:str=Field(min_length=1, max_length=120)
+   title:str=Field(min_length=1, max_length=500)
    main_category:MainCategory
    sub_category: str
    description:str = Field(max_length=3000)
