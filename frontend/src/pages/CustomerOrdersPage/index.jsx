@@ -203,7 +203,7 @@ const CustomerOrdersPage = () => {
 
 
   <p className='text-end'><span className="text-zinc-900 text-sm ">
-                {moment(cur.created_at).format("LLL")}</span></p>
+                {moment.utc(cur.created_at).local().format("LLL")}</span></p>
                     
 
               </div>
