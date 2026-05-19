@@ -170,7 +170,7 @@ export default AllProductsPage
                               {moment(data.created_at).format("LLL")}
                             </p>
                           
-                            <div className='flex flex-col sm:flex-row items-end sm:items-center gap-2'>
+                            <div className='flex flex-col md:flex-row items-end md:items-center gap-2'>
                           
                               <Link
                                 to={`/update-product/${data.product_id}/${data.slug}`}
