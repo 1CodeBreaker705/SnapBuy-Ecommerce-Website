@@ -24,7 +24,7 @@ const UpdateProductPage = () => {
     sub_category: z.string().min(1, "Select subcategory"),
     description: z.string().trim().min(1, "Description is required").max(3000, "Description cannot exceed 3000 characters"),
     price: z.string().min(1, "Price is required"),
-    images: z.array(z.instanceof(File)).min(1, "At least 1 image is required")
+    images: z.array(z.any()).min(1, "At least 1 image is required")
   })
 
   const {
