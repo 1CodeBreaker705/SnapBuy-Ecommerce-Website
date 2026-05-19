@@ -262,18 +262,24 @@ const UpdateProductPage = () => {
               <span className="text-red-500">*</span>
             </label>
 
-            <textarea
-              disabled={isSubmitting}
-              {...register("description")}
-              id='description'
-              onInput={(e) => {
-                e.target.style.height = "auto"
-                e.target.style.height = `${e.target.scrollHeight}px`
-              }}
-              rows={5}
-              className="w-full py-2 px-3 rounded-lg outline-none bg-white border border-gray-200 resize-none overflow-hidden"
-              placeholder='Enter product description'
-            />
+                      <textarea
+                          disabled={isSubmitting}
+                          {...register("description")}
+                          id='description'
+                          ref={(el) => {
+                            if (el) {
+                              el.style.height = "auto"
+                              el.style.height = `${el.scrollHeight}px`
+                            }
+                          }}
+                          onInput={(e) => {
+                            e.target.style.height = "auto"
+                            e.target.style.height = `${e.target.scrollHeight}px`
+                          }}
+                          rows={5}
+                          className="w-full py-2 px-3 rounded-lg outline-none bg-white border border-gray-200 resize-none overflow-hidden"
+                          placeholder='Enter product description'
+                        />
 
             {errors.description && (
               <p className="text-red-500 text-sm">
