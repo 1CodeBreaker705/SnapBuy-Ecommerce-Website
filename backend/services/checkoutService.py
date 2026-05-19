@@ -51,7 +51,7 @@ async def makeCheckout(data,user_id):
             'image':product['images'][0]['image_url'],
             'slug':product['slug'],
             'merchant_id':str(product['merchant_detail']['_id']),
-            "fulfillment_status": checkoutModel.FulfillmentStatusEnum.placed,
+            "fulfillment_status": checkoutModel.FulfillmentStatusEnum.pending,
         })
     
     if not data['products']:
@@ -90,11 +90,22 @@ async def checkoutCallbackService(data):
             'razorpay_signature': data.razorpay_signature
         })
 
-        order_data = await orders_collection.find_one_and_update({"razorpay_order_id":data.razorpay_order_id},{
+        order_data = await orders_collection.find_one({
+            "razorpay_order_id": data.razorpay_order_id
+        })
+        
+        updated_products = []
+        
+        for product in order_data['products']:
+            product['fulfillment_status'] = checkoutModel.FulfillmentStatusEnum.placed
+            updated_products.append(product)
+
+        await orders_collection.find_one_and_update({"razorpay_order_id":data.razorpay_order_id},{
             "$set":{
                 'razorpay_payment_id': data.razorpay_payment_id,
                 'razorpay_signature': data.razorpay_signature,
                 "order_status": checkoutModel.OrdersEnum.confirmed,
+                "products": updated_products,
                 "updated_at":datetime.now(timezone.utc)
             }
         })
