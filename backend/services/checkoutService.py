@@ -51,7 +51,7 @@ async def makeCheckout(data,user_id):
             'image':product['images'][0]['image_url'],
             'slug':product['slug'],
             'merchant_id':str(product['merchant_detail']['_id']),
-            "fulfillment_status": checkoutModel.FulfillmentStatusEnum.pending,
+            "fulfillment_status": checkoutModel.FulfillmentStatusEnum.placed,
         })
     
     if not data['products']:
