@@ -159,48 +159,75 @@ export default AllProductsPage
             {data.title}
           </h2>
 
-          <div className="
-          flex
-          items-center
-          justify-between
-          mt-6
-          ">
-
-            <p className="text-sm text-zinc-500">
-              {moment(data.created_at).format("LLL")}
-            </p>
-
-            <button 
-              onClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    deleteHandler()
-                  }}
-              disabled={loading}
-              className="
-              flex
-              items-center
-              justify-center
-              w-8
-              h-8
-              md:w-11
-              md:h-11
-              rounded-xl
-              bg-black
-              text-white
-              hover:bg-red-500
-              transition-all
-              duration-300
-              disabled:bg-gray-400
-              cursor-pointer
-              "
-            >
-
-              <IoMdTrash className="text-base md:text-xl" />
-
-            </button>
-
-          </div>
+            <div className="
+                          flex
+                          items-center
+                          justify-between
+                          mt-6
+                          ">
+                          
+                            <p className="text-sm text-zinc-500">
+                              {moment(data.created_at).format("LLL")}
+                            </p>
+                          
+                            <div className='flex items-center gap-2'>
+                          
+                              <Link
+                                to={`/update-product/${data.product_id}`}
+                                onClick={(e) => e.stopPropagation()}
+                                className="
+                                flex
+                                items-center
+                                justify-center
+                                px-4
+                                h-8
+                                md:h-11
+                                rounded-xl
+                                bg-blue-600
+                                text-white
+                                hover:bg-blue-700
+                                transition-all
+                                duration-300
+                                text-sm
+                                md:text-base
+                                "
+                              >
+                                Update
+                              </Link>
+                          
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  e.stopPropagation()
+                                  deleteHandler()
+                                }}
+                                disabled={loading}
+                                className="
+                                flex
+                                items-center
+                                justify-center
+                                w-8
+                                h-8
+                                md:w-11
+                                md:h-11
+                                rounded-xl
+                                bg-black
+                                text-white
+                                hover:bg-red-500
+                                transition-all
+                                duration-300
+                                disabled:bg-gray-400
+                                cursor-pointer
+                                "
+                              >
+                          
+                                <IoMdTrash className="text-base md:text-xl" />
+                          
+                              </button>
+                          
+                            </div>
+                          
+                  </div>
 
         </div>
 
