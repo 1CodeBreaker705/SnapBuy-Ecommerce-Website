@@ -62,7 +62,7 @@ const UpdateProductPage = () => {
         main_category: product.main_category,
         sub_category: product.sub_category,
         description: product.description,
-        price: product.price,
+        price: String(product.price),
         images: product.images
       })
 
