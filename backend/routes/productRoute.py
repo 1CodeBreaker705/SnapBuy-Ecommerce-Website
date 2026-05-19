@@ -27,7 +27,7 @@ async def addProductView(images:Annotated[List[UploadFile],File(...)],title:str=
      raise HTTPException(status_code=400,detail=e.errors())
 
 @router.patch("/update-product/{id}")
-async def updateProductView(id: str,images: Annotated[List[UploadFile], File(...)],title: str = Form(...),main_category: str = Form(...),sub_category: str = Form(...),description: str = Form(...),price: int = Form(...),user_id: str = Depends(verify(RolesEnum.merchant))):
+async def updateProductView(id: str,images: Annotated[List[UploadFile] | None, File()] = None,title: str = Form(...),main_category: str = Form(...),sub_category: str = Form(...),description: str = Form(...),price: int = Form(...),user_id: str = Depends(verify(RolesEnum.merchant))):
 
     data = productModel.AddProduct.model_validate({
         "title": title,
