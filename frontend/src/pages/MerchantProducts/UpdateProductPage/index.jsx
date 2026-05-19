@@ -16,6 +16,7 @@ const UpdateProductPage = () => {
 
   const [loading, setLoading] = useState(true)
   const [initialLoad, setInitialLoad] = useState(true)
+  const [existingImages, setExistingImages] = useState([])
 
   // ZOD SCHEMA
   const registerSchema = z.object({
@@ -54,16 +55,16 @@ const UpdateProductPage = () => {
   const fetchProduct = async () => {
     try {
       const response = await axiosClient.get(`/product/${slug}`)
-
       const product = response.data
-
+      setExistingImages(product.images)
+      
       reset({
         title: product.title,
         main_category: product.main_category,
         sub_category: product.sub_category,
         description: product.description,
         price: String(product.price),
-        images: product.images
+        images: []
       })
 
     } catch (error) {
