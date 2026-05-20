@@ -219,7 +219,7 @@ const Dashboard = () => {
                 </Link>
 
                 <Link
-                  to="/orders"
+                  to="/merchant-orders"
                   className='px-6 py-3 rounded-xl border border-zinc-300 hover:bg-zinc-100 transition'
                 >
                   View Orders
