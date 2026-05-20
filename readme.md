@@ -14,7 +14,7 @@ The platform supports three different user flows:
 - Customers
 - Merchants
 
-Public users can browse products and open product detail pages without authentication. Customers gain access to cart, wishlist, checkout, and order management systems, while merchants can manage products and fulfillment workflows through a dedicated merchant dashboard.
+Public users can browse products and open product detail pages without authentication. Customers gain access to cart, wishlist, checkout, and order management systems,order status tracking , while merchants can manage products and fulfillment workflows through a dedicated merchant dashboard.
 
 ---
 
@@ -24,7 +24,7 @@ Public users can browse products and open product detail pages without authentic
 
 - React
 - Tailwind CSS
-- Zustand
+- Global client-side state management using Zustand
 - React Router
 - React Hook Form
 - Zod Validation
@@ -91,6 +91,7 @@ Handles:
 - Token verification middleware
 - Secure logout handling
 - Role-based authorization
+- Automatic user profile creation during registration
 
 ## Security
 
@@ -126,6 +127,14 @@ Protected APIs are enforced using FastAPI dependencies and middleware-based auth
 - Manange and fullfil orders 
 - Merchant name on products
 
+## Customer Features
+
+- Cart
+- Wishlist
+- Checkout 
+- Orders
+- Order tracking
+
 ## Product Features
 
 - SEO-friendly slug generation
@@ -135,7 +144,12 @@ Protected APIs are enforced using FastAPI dependencies and middleware-based auth
 - Product search system
 - Dynamic public product pages
 - Multiple product image view support
-- order lifecycle (product->cart->checkout->confirm/failed->failed(order-cancelled)/success(order-confirmed)/otherwise order pending->order status view by customer/order status managed by merchants)
+- Complete order lifecycle management
+  - Product → Cart → Checkout
+  - Payment success and failure handling
+  - Pending, confirmed, and cancelled order states
+  - Customer order tracking
+  - Merchant fulfillment status management
 
 ---
 
