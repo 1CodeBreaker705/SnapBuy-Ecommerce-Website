@@ -33,6 +33,7 @@ const PublicProductPage = () => {
     }
     
     useEffect(()=>{
+        window.scrollTo(0,0)
         fetchProductBySlug()
     },[slug])
     
