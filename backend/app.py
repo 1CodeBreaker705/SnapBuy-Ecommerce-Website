@@ -57,4 +57,4 @@ app.include_router(MerchantOrdersRouter)
 
 @app.api_route("/health", methods=["GET", "HEAD"], tags=["Health"])
 async def health():
-    return {"status": "ok"}
+    return {"status": "Server is Up"}
