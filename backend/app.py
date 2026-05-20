@@ -55,8 +55,6 @@ app.include_router(DashboardRouter)
 app.include_router(MerchantOrdersRouter)
 
 
-@app.get("/",tags=["ServerHealth"])
-def healthRoute():
-  return{
-     "msg":"Server is Working Correctly"
-  }
+@app.api_route("/health", methods=["GET", "HEAD"], tags=["Health"])
+async def health():
+    return {"status": "ok"}
