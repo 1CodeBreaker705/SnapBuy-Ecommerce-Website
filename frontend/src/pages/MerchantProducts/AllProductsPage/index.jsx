@@ -190,7 +190,6 @@ export default AllProductsPage
                                 border-blue-600
                                 hover:bg-blue-600
                                 hover:text-white
-                                hover:border-blue-700
                                 transition-all
                                 duration-300
                                 text-sm
