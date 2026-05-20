@@ -164,8 +164,8 @@ const MerchantOrdersPage = () => {
                                   <h4 className="font-semibold text-sm mt-3 leading-5">
 
                                     {
-                                      product.title.length > 50
-                                      ? product.title.substring(0,50) + "..."
+                                      product.title.length > 55
+                                      ? product.title.substring(0,55) + "..."
                                       : product.title
                                     }
 
