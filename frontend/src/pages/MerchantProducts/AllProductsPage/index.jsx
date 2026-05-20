@@ -184,9 +184,12 @@ export default AllProductsPage
                                 h-8
                                 md:h-11
                                 rounded-xl
-                                bg-blue-600
-                                text-white
-                                hover:bg-blue-700
+                                text-blue-600
+                                bg-white
+                                border
+                                border-blue-600
+                                hover:text-blue-700
+                                hover:border-blue-700
                                 transition-all
                                 duration-300
                                 text-sm
