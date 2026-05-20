@@ -118,6 +118,7 @@ Protected APIs are enforced using FastAPI dependencies and middleware-based auth
 
 - Add products
 - Delete products
+- Update Products
 - View merchant products
 - Upload multiple images
 - Merchant ownership protection
