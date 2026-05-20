@@ -127,10 +127,10 @@ export default function AboutPage() {
                 <li>• Secure authentication and protected routes</li>
                 <li>• Dynamic product search and category filtering</li>
                 <li>• Layered category + subcategory filtering</li>
-                <li>• Responsive shopping cart system</li>
-                <li>• Wishlist management system</li>
+                <li>• Persistent Shopping Cart system</li>
+                <li>• Persistent Wishlist management system</li>
                 <li>• Razorpay checkout integration</li>
-                <li>• Persistent order history</li>
+                <li>• Customer order status tracking and order history</li>
                 <li>• Snapshot-based product storage in orders</li>
                 <li>• Checkout success and failure handling</li>
                 <li>• Dynamic profile and address management</li>
@@ -145,7 +145,7 @@ export default function AboutPage() {
 
               <ul className="space-y-3">
                 <li>• Multi-vendor product management</li>
-                <li>• Product upload and deletion system</li>
+                <li>• Product upload, deletion and update system</li>
                 <li>• Cloudinary image upload handling</li>
                 <li>• Merchant-specific dashboard analytics</li>
                 <li>• Product ownership protection</li>
@@ -200,7 +200,7 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed">
               The frontend was designed with responsive ecommerce layouts, reusable
               component systems, responsive sidebar architecture, dashboard-style UI,
-              modern product cards, smooth transitions, and mobile-first design patterns.
+              modern product cards, smooth transitions, mobile-first design patterns and sleek modern UI design.
             </p>
           </div>
 
