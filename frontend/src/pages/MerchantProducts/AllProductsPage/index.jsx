@@ -188,7 +188,7 @@ export default AllProductsPage
                                 bg-white
                                 border
                                 border-blue-600
-                                hover:bg-blue-700
+                                hover:bg-blue-600
                                 hover:text-white
                                 hover:border-blue-700
                                 transition-all
