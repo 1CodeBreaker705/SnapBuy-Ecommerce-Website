@@ -305,7 +305,9 @@ const UpdateProductPage = () => {
               setError={setError}
               existingImages={existingImages}
             />
-
+            <p className='text-sm text-zinc-500 mt-2'>
+                  Uploading new images will replace existing product images.
+            </p>
             {errors.images && (
               <p className="text-red-500 text-sm">
                 {errors.images.message}
