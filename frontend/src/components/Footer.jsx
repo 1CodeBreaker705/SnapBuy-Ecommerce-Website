@@ -199,14 +199,14 @@ const Footer = () => {
             <div className='flex items-center gap-5 text-2xl text-zinc-400'>
 
               <a
-                href="#"
+                href="https://github.com/1CodeBreaker705"
                 className='hover:text-white transition'
               >
                 <FaGithub />
               </a>
 
               <a
-                href="#"
+                href="https://www.linkedin.com/in/ranjan-singh-63a653350/"
                 className='hover:text-blue-400 transition'
               >
                 <FaLinkedin />
