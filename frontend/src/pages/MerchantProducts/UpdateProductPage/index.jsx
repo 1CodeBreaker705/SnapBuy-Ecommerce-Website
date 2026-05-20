@@ -303,6 +303,7 @@ const UpdateProductPage = () => {
               setValue={setValue}
               control={control}
               setError={setError}
+              existingImages={existingImages}
             />
 
             {errors.images && (
