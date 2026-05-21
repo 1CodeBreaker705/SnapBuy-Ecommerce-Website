@@ -17,7 +17,7 @@ import 'swiper/css/navigation'
 const PublicProductPage = () => {
   const {slug}=useParams()
   const [loading,setLoading] = useState(true)
-  const [product,setProduct] = useState({})
+  const [product,setProduct] = useState(null)
   
   const fetchProductBySlug=async()=>{
         try {
@@ -44,7 +44,23 @@ const PublicProductPage = () => {
        </div>
         </>
     }
-    
+
+  if(!product){
+    return (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
+            <h1 className="text-2xl md:text-3xl font-bold mb-3">
+                Product No Longer Available
+            </h1>
+            <Link
+                to="/"
+                className="px-5 py-3 md:px-6 rounded-xl bg-black text-white"
+            >
+                Continue Shopping
+            </Link>
+        </div>
+    )
+ }
+   
   return (
     <>
 <section className="text-gray-600 body-font overflow-hidden">
