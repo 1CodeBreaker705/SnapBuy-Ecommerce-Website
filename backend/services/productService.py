@@ -127,16 +127,32 @@ async def updateProductService(id, images, data, user_id):
 
 
 async def deleteProductService(id,user_id):
-    product = await product_collection.find_one_and_delete({"_id":bson.ObjectId(id),"merchant_detail._id": user_id})
+    product = await product_collection.find_one({"_id":bson.ObjectId(id),"merchant_detail._id": user_id})
     if not product:
         raise HTTPException(status_code=404,detail="Product Not Found")
     
-    # delete all images first
-    # images = product['images'] 
-    for image in product['images']:
-        cloudinary.uploader.destroy(image['public_id'])
-    
+    # check if product exists in any order history
+    existing_order = await orders_collection.find_one({
+        "products._id": str(product["_id"])
+    })
+
+    if existing_order:
+        # keep first image for order history delete extra images
+        extra_images = product['images'][1:]
+        for image in extra_images:
+            cloudinary.uploader.destroy(image['public_id'])
+
+    else:
+        # delete all images
+        for image in product['images']:
+            cloudinary.uploader.destroy(image['public_id'])
+
+    # delete product from database
+    await product_collection.find_one_and_delete({
+    "_id": bson.ObjectId(id),
+    "merchant_detail._id": user_id
+    })
 
     return {
-        "msg":"Product Deleted"
+        "msg": "Product Deleted"
     }
